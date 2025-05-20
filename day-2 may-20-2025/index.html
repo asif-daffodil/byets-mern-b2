@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <input type="hidden" name="hiddenField" value="hiddenValue">
+        <label for="search">Search :</label>
+        <input type="search" id="search" placeholder="Khoz the Search..." required autocomplete="off" minlength="3" maxlength="6">
+        <br><br>
+        <label for="yourName">Your name :</label>
+        <input type="text" placeholder="Your name" id="yourName">
+        <br><br>
+        <label for="yourEmail">Your email :</label>
+        <input type="email" placeholder="Your email" id="yourEmail" autocomplete="off">
+        <br><br>
+        <label for="yourWeb">Your website :</label>
+        <input type="url" placeholder="Your website" id="yourWeb">
+        <br><br>
+        <label for="yourPas">Your password :</label>
+        <input type="password" placeholder="Your password" id="yourPas">
+        <br><br>
+        <label for="">Your gender :</label>
+        <label for="male">
+            <input type="radio" id="male" name="gender" value="Male">Male
+        </label>
+        <label for="female">
+            <input type="radio" id="female" name="gender" value="Female">Female
+        </label>
+        <label for="others">
+            <input type="radio" id="others" name="gender" value="Others">Others
+        </label>
+        <br><br>
+        <label for="">Skills :</label>
+        <label for="html">
+            <input type="checkbox" value="html" name="skill" id="html">HTML
+        </label>
+        <label for="css">
+            <input type="checkbox" value="css" name="skill" id="css">CSS
+        </label>
+        <label for="js">
+            <input type="checkbox" value="js" name="skill" id="js">JavaScript
+        </label>
+        <br><br>
+        <label for="dob">Date of Birth :</label>
+        <input type="date" id="dob" placeholder="Date of Birth">
+        <br><br>
+        <label for="hairColor">Hair Color :</label>
+        <input type="color" id="hairColor">
+        <br><br>
+        <label for="yourVoice">Your volume :</label>
+        <input type="range" id="yourVoice">
+        <br><br>
+        <label for="profilePic">
+            Profile Picture :
+            <input type="file" id="profilePic" accept="image/*">
+        </label>
+        <br><br>
+        <label for="country">Country :</label>
+        <select id="country">
+            <option value="">--Select Country--</option>
+            <option value="bangladesh">Bangladesh</option>
+            <option value="india">India</option>
+            <option value="pakistan">Pakistan</option>
+            <option value="usa">USA</option>
+            <option value="usa">USA</option>
+            <option value="canada">Canada</option>
+            <option value="uk">UK</option>
+        </select>
+        <br><br>
+        <label for="yourBio">Your Bio :</label><br>
+        <textarea id="yourBio" cols="40" rows="6" placeholder="Your Bio"></textarea>
+        <br><br>
+        <input type="reset">
+        <input type="submit" value="Register">
+        <br><br>
+        <input type="image" src="./button.png" alt="Submit" width="100">
+    </form>
+</body>
+</html>
