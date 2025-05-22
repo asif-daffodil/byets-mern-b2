@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: jarina420;
+    src: url("./fonts/SHOWG.TTF");
+}
+
+.btn {
+    width: 130px;
+    height: 30px;
+    border-width: 0;
+    background: radial-gradient(#00f, #000);
+    color: white;
+    text-transform: uppercase;
+    border-radius: 20px/50%;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-family: jarina420;
+}
+
+.main {
+    width: 300px;
+    border: 10px solid #0007;
+    margin: 20px auto;
+    /* margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto; */
+    padding: 20px;
+    /* padding-top: 20px;
+    padding-right: 30px;
+    padding-bottom: 20px;
+    padding-left: 30px; */
+    /* padding: 20px 30px 40px 50px; */
+    /* padding: 20px 30px; */
+    /* padding: 20px 30px 40px; */
+    background: linear-gradient(to top right, lightblue, lightyellow, lightgreen);
+    font-family: "Oswald", sans-serif;
+}
+
