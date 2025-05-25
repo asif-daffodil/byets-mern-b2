@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.banner {
+    width: 100%;
+    height: 600px;
+    /* 
+    background-image: url("../images/bdbg.jpg");
+    background-color: aquamarine;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; 
+    */
+
+    background: linear-gradient(to top right, rgba(0, 0, 0, 1), rgba(255, 0, 0, 0.5), rgba(0, 0, 0, 1)), url("../images/bdbg.jpg") aquamarine no-repeat center /contain;
+
+    display: flex;
+}
+
+.banner > img {
+    height: 200px;
+    margin: auto;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    background: url("../images/wall.webp");
+    background-size: 400px;
+}

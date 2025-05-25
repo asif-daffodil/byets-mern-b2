@@ -1,0 +1,70 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+.container {
+    width: 200px;
+    height: 200px;
+    background-color: dodgerblue;
+    margin: 20px;
+    position: relative;
+}
+
+.container:hover {
+    top: 20px;
+    right: -20px;
+}
+
+.main {
+    width: 200px;
+    height: 200px;
+    background-color: lightcoral;
+    margin: 20px auto;
+    position: relative;
+}
+
+.pain {
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    transition: 0.5s;
+}
+
+.main:hover > .pain {
+    top: 150px;
+    left: 150px;
+}
+
+.dhaka {
+    width: 200px;
+    height: 600px;
+    margin: 20px auto 800px;
+    background-color: lightgreen;
+    padding-top: 20px;
+}
+
+.dhanmondi {
+    width: 160px;
+    height: 160px;
+    background-color: hotpink;
+    position: sticky;
+    top: 20px;
+    margin: 0px auto 20px;
+}
+
+.g2t {
+    width: max-content;
+    padding: 8px 16px;
+    background: brown;
+    color: white;
+    border-radius: 4px;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+}
