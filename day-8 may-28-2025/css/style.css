@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 800px;
+    margin: 20px auto;
+    display: table;
+    border: 1px solid #ccc;
+}
+
+.row {
+    display: table-row;
+}
+
+.col {
+    display: table-cell;
+    padding: 8px 12px;
+    vertical-align: middle;
+}
+
+.container>.row:not(:last-child)>.col {
+    border-bottom: 1px solid #ccc;
+}
+
+.row>.col:not(:last-child) {
+    border-right: 1px solid #ccc;
+}
+
+.transform {
+    width: 200px;
+    height: 200px;
+    margin: 20px auto 600px;
+    background: url("../images/bg.png");
+    background-size: cover;
+    transition: transform 0.5s linear;
+}
+
+.transform:hover {
+    /* transform: translate(-50px, -50px); */
+    /* transform: scale(0.8); */
+    /* transform: rotate(360deg); */
+    /* transform: skew(-20deg, -20deg); */
+    /* transform: translate(-20px, -20px) scale(0.9) rotateY(360deg) skew(-20deg, -20deg); */
+    transform: rotateY(360deg);
+}
+
+.messi {
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 20px;
+    /* animation-name: messi;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear; */
+    animation: messi 10s linear infinite;
+}
+
+@keyframes messi {
+    0% {
+        background: url('../images/messi.webp');
+        background-size: cover;
+        background-position: center;
+        transform: rotate(0deg);
+        left: -400px;
+    }
+    50% {
+        background: url('../images/goat.jpg');
+        background-size: cover;
+        background-position: center;
+        transform: rotate(180deg);
+        left: calc(50% - 200px);
+    }
+    100% {
+        background: url('../images/messi.webp');
+        background-size: cover;
+        background-position: center;
+        transform: rotate(360deg);
+        left: 100%;
+    }
+}
