@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+$paraColor: #333;
+$headerColor: #4CAF50;
+
+@mixin fontStyle ($fs: 16px, $fst: normal, $fw: normal) {
+    font-family: Arial, sans-serif;
+    font-size: $fs;
+    font-style: $fst;
+    font-weight: $fw;
+}
+
+.main {
+    background-color: #ccc;
+    padding: 20px;
+    >h1 {
+        color: $headerColor;
+        @include fontStyle(32px, normal);
+    }
+    >p {
+        color: $paraColor;
+        margin: 10px 0;
+        @include fontStyle(16px, italic, normal);
+    }
+    >button {
+        background-color: $headerColor;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        @include fontStyle(16px, normal, bold);
+        &:hover {
+            background-color: darken($headerColor, 20%);
+        }
+    }
+}
+
+.pain {
+    @extend .main;
+    background-color: lightgoldenrodyellow;
+    >a{
+        &:visited {
+            color: hotpink;
+        }
+        &:hover {
+            color: blue;
+        }
+        &:active {
+            color: red;
+        }
+    }
+}
