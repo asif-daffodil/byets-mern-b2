@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <div class="w-screen h-screen bg-gradient-to-tr from-cyan-600 via-[#fff] to-[#333] flex">
+        <div class="bg-[#fff6] m-auto p-4 rounded-lg shadow-md">
+            <h1 class="text-2xl md:text-4xl mb-3">Sign Up</h1>
+            <form action="" id="regForm">
+                <input type="text" placeholder="Enter your name" name="yName" class="block border p-2 w-80 rounded outline-cyan-600">
+                <div class="text-red-600 text-sm px-2 mb-2 w-80"></div>
+                <input type="text" placeholder="Enter your email" name="yEmail" class="block border p-2 w-80 rounded outline-cyan-600">
+                <div class="text-red-600 text-sm px-2 mb-2 w-80"></div>
+                <input type="password" placeholder="Enter your password" name="yPassword" class="block border p-2 w-80 rounded outline-cyan-600">
+                <div class="text-red-600 text-sm px-2 mb-2 w-80"></div>
+                <input type="password" placeholder="Confirm your password" name="yConfirmPassword" class="block border p-2 w-80 rounded outline-cyan-600">
+                <div class="text-red-600 text-sm px-2 mb-2 w-80"></div>
+                <label class="flex items-center mt-2 mb-4 cursor-pointer select-none text-cyan-700 font-medium">
+                    <input type="checkbox" id="showPassword" class="accent-cyan-600 w-4 h-4 mr-2 transition-all duration-200 rounded focus:ring-2 focus:ring-cyan-400">
+                    Show Password
+                </label>
+                <button type="submit" class="bg-cyan-600 px-4 py-2 text-white rounded-md hover:bg-cyan-800 cursor-pointer">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const regForm = document.getElementById('regForm');
+
+        regForm.addEventListener("submit", e => {
+            e.preventDefault();
+            const formData = new FormData(regForm);
+            const yName = formData.get('yName');
+            const yEmail = formData.get('yEmail');
+            const yPassword = formData.get('yPassword');
+            const yConfirmPassword = formData.get('yConfirmPassword');
+
+            const validateName = yName => {
+                if(yName === ""){
+                    regForm[0].nextElementSibling.textContent = "Name is required";
+                } else if(!yName.match(/^[a-zA-Z. ]+$/)){
+                    regForm[0].nextElementSibling.textContent = "Name can only contain letters and spaces";
+                } else {
+                    regForm[0].nextElementSibling.textContent = "";
+                }
+            }
+            validateName(yName);
+
+            const validateEmail = yEmail => {
+                if(yEmail === ""){
+                    regForm[1].nextElementSibling.textContent = "Email is required";
+                } else if(!yEmail.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)){
+                    regForm[1].nextElementSibling.textContent = "Invalid email format";
+                } else {
+                    regForm[1].nextElementSibling.textContent = "";
+                }
+            }
+            validateEmail(yEmail);
+
+            const validatePassword = yPassword => {
+                if(yPassword === ""){
+                    regForm[2].nextElementSibling.textContent = "Password is required";
+                } else if(!yPassword.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z\d!@#$%^&*]{8,}$/)){
+                    regForm[2].nextElementSibling.textContent = "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character";
+                } else {
+                    regForm[2].nextElementSibling.textContent = "";
+                }
+            }
+            validatePassword(yPassword);
+            
+            const validateConfirmPassword = yConfirmPassword => {
+                if(yConfirmPassword === ""){
+                    regForm[3].nextElementSibling.textContent = "Confirm Password is required";
+                } else if(yConfirmPassword !== yPassword){
+                    regForm[3].nextElementSibling.textContent = "Passwords do not match";
+                } else {
+                    regForm[3].nextElementSibling.textContent = "";
+                }
+            }
+            validateConfirmPassword(yConfirmPassword);
+
+            regForm[0].addEventListener("keyup", () => {
+                validateName(regForm[0].value);
+            })
+
+            regForm[1].addEventListener("keyup", () => {
+                validateEmail(regForm[1].value);
+            })
+
+            regForm[2].addEventListener("keyup", () => {
+                validatePassword(regForm[2].value);
+            })
+
+            regForm[3].addEventListener("keyup", () => {
+                validateConfirmPassword(regForm[3].value);
+            })
+        })
+
+        const showPassword = document.getElementById('showPassword');
+        showPassword.addEventListener('change', () => {
+            const status = showPassword.checked;
+            regForm[2].type = status ? 'text' : 'password';
+            regForm[3].type = status ? 'text' : 'password';
+        });
+    </script>
+
+</body>
+</html>
