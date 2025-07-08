@@ -8,13 +8,13 @@
   <body>
     <div class="w-screen h-screen flex">
         <div class="w-96 m-auto border">
-            <div class="flex">
-                <div class="p-2 w-full text-center border-r border-b">Dhaka</div>
-                <div class="p-2 w-full text-center border-r border-b">Rajshahi</div>
-                <div class="p-2 w-full text-center border-r border-b">Khulna</div>
-                <div class="p-2 w-full text-center border-b">Rangpur</div>
+            <div class="flex" id="headers">
+                <div class="p-2 w-full text-center border-r bg-gray-200 cursor-pointer">Dhaka</div>
+                <div class="p-2 w-full text-center border-r border-b hover:bg-gray-300 cursor-pointer">Rajshahi</div>
+                <div class="p-2 w-full text-center border-r border-b hover:bg-gray-300 cursor-pointer">Khulna</div>
+                <div class="p-2 w-full text-center border-b hover:bg-gray-300 cursor-pointer">Rangpur</div>
             </div>
-            <div class="relative h-36">
+            <div class="relative h-36" id="details">
                 <div class="absolute bg-gray-200 flex items-center justify-center p-2 h-full top-0 left-0 transition-all duration-300 ease-in-out">
                     Dhaka city is the capital of Bangladesh. It is the largest city in the country and serves as its political, economic, and cultural center. The city is known for its vibrant culture, rich history, and diverse population.
                 </div>
@@ -30,5 +30,26 @@
             </div>
         </div>
     </div>
+
+    <script>
+        const headers = document.getElementById('headers').children;
+        const details = document.getElementById('details').children;
+
+        Array.from(headers).forEach((head, index) => {
+            head.addEventListener('click', () => {
+                Array.from(headers).forEach((h, i) => {
+                    if( i === index) {
+                        h.classList.add('bg-gray-200');
+                        h.classList.remove('border-b', 'hover:bg-gray-300');
+                        details[i].classList.remove('opacity-0', 'invisible');
+                    } else {
+                        h.classList.remove('bg-gray-200');
+                        h.classList.add('border-b', 'hover:bg-gray-300');
+                        details[i].classList.add('opacity-0', 'invisible');
+                    }
+                });
+            });
+        })
+    </script>
   </body>
 </html>

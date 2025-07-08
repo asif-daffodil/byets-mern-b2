@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <div class="w-screen h-screen flex">
+        <div class="w-96 m-auto">
+            <div class="w-full border mb-2">
+                <header class="p-2 border-b border-gray-300 bg-gray-100 relative cursor-pointer accordion">
+                    What is your name?
+                    <i class="fa-solid fa-angle-down absolute right-2 top-1/2 transform -translate-y-1/2 transition-all duration-300 ease-in-out"></i>
+                </header>
+                <article class="p-0 h-0 overflow-hidden transition-all duration-300 ease-in-out">My name is John Doe.</article>
+            </div>
+            <div class="w-full border mb-2">
+                <header class="p-2 border-b border-gray-300 bg-gray-100 relative cursor-pointer accordion">
+                    What is your age?
+                    <i class="fa-solid fa-angle-down absolute right-2 top-1/2 transform -translate-y-1/2 transition-all duration-300 ease-in-out"></i>
+                </header>
+                <article class="p-0 h-0 overflow-hidden transition-all duration-300 ease-in-out">I am 30 years old.</article>
+            </div>
+            <div class="w-full border mb-2">
+                <header class="p-2 border-b border-gray-300 bg-gray-100 relative cursor-pointer accordion">
+                    What is your favorite color?
+                    <i class="fa-solid fa-angle-down absolute right-2 top-1/2 transform -translate-y-1/2 transition-all duration-300 ease-in-out"></i>
+                </header>
+                <article class="p-0 h-0 overflow-hidden transition-all duration-300 ease-in-out">My favorite color is blue.</article>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const accordions = document.querySelectorAll('.accordion');
+        accordions.forEach(accordion => {
+            accordion.addEventListener('click', () => {
+                // if it have class bg-gray-600 text-white
+                const isActive = accordion.classList.contains('bg-gray-600') && accordion.classList.contains('text-white');
+                accordion.classList.toggle('bg-gray-600', !isActive);
+                accordion.classList.toggle('text-white', !isActive);
+                accordion.classList.toggle('bg-gray-100', isActive);
+                accordion.querySelector('i').classList.toggle('rotate-180', !isActive);
+                const article = accordion.nextElementSibling;
+                if (isActive) {
+                    article.style.height = '0';
+                    article.style.padding = '0';
+                } else {
+                    article.style.height = 'auto';
+                    article.style.padding = '8px';
+                }
+            });
+        });
+    </script>
+  </body>
+</html>
