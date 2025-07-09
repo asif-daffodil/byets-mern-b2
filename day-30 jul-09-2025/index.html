@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <div class="w-screen h-screen flex">
+        <div class="bg-white border-2 border-gray-300 rounded-2xl shadow-2xl m-auto p-6 w-96 flex flex-col items-center">
+            <div id="input" class="w-full rounded-xl border-2 border-gray-200 h-16 leading-[64px] px-4 text-2xl font-mono text-right bg-gray-50 mb-6 shadow-inner transition-all duration-200">0</div>
+            <div class="w-full grid grid-cols-4 gap-4">
+                <button class="bg-gray-100 hover:bg-gray-200 rounded-xl h-14 text-xl font-semibold transition" onclick="clearInput()">C</button>
+                <button class="bg-gray-100 hover:bg-gray-200 rounded-xl h-14 text-xl font-semibold transition" onclick="appendToInput('(')">(</button>
+                <button class="bg-gray-100 hover:bg-gray-200 rounded-xl h-14 text-xl font-semibold transition" onclick="appendToInput(')')">)</button>
+                <button class="bg-blue-500 hover:bg-blue-600 text-white rounded-xl h-14 text-xl font-bold transition" onclick="appendToInput('/')">÷</button>
+                
+
+                <button class="bg-gray-100 hover:bg-gray-200 rounded-xl h-14 text-xl font-semibold transition" onclick="appendToInput('7')">7</button>
+                <button class="bg-gray-100 hover:bg-gray-200 rounded-xl h-14 text-xl font-semibold transition" onclick="appendToInput('8')">8</button>
+                <button class="bg-gray-100 hover:bg-gray-200 rounded-xl h-14 text-xl font-semibold transition" onclick="appendToInput('9')">9</button>
+                <button class="bg-blue-500 hover:bg-blue-600 text-white rounded-xl h-14 text-xl font-bold transition" onclick="appendToInput('*')">×</button>
+
+                <button class="bg-gray-100 hover:bg-gray-200 rounded-xl h-14 text-xl font-semibold transition" onclick="appendToInput('4')">4</button>
+                <button class="bg-gray-100 hover:bg-gray-200 rounded-xl h-14 text-xl font-semibold transition" onclick="appendToInput('5')">5</button>
+                <button class="bg-gray-100 hover:bg-gray-200 rounded-xl h-14 text-xl font-semibold transition" onclick="appendToInput('6')">6</button>
+                <button class="bg-blue-500 hover:bg-blue-600 text-white rounded-xl h-14 text-xl font-bold transition" onclick="appendToInput('-')">−</button>
+
+                <button class="bg-gray-100 hover:bg-gray-200 rounded-xl h-14 text-xl font-semibold transition" onclick="appendToInput('1')">1</button>
+                <button class="bg-gray-100 hover:bg-gray-200 rounded-xl h-14 text-xl font-semibold transition" onclick="appendToInput('2')">2</button>
+                <button class="bg-gray-100 hover:bg-gray-200 rounded-xl h-14 text-xl font-semibold transition" onclick="appendToInput('3')">3</button>
+                <button class="bg-blue-500 hover:bg-blue-600 text-white rounded-xl h-14 text-xl font-bold transition" onclick="appendToInput('+')">+</button>
+
+                <button class="bg-gray-100 hover:bg-gray-200 rounded-xl h-14 text-xl font-semibold transition col-span-2" onclick="appendToInput('0')">0</button>
+                <button class="bg-gray-100 hover:bg-gray-200 rounded-xl h-14 text-xl font-semibold transition" onclick="appendToInput('.')">.</button>
+                <button class="bg-green-500 hover:bg-green-600 text-white rounded-xl h-14 text-xl font-bold transition" onclick="calculateResult()">=</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function appendToInput(value) {
+            const input = document.getElementById("input");
+            if (input.innerText === "0") {
+                input.innerText = value;
+            } else {
+                input.innerText += value;
+            }
+        }
+
+        function clearInput() {
+            document.getElementById("input").innerText = "0";
+        }
+
+        function calculateResult() {
+            const input = document.getElementById("input");
+            try {
+                input.innerText = eval(input.innerText);
+            } catch {
+                input.innerText = "Error";
+            }
+        }
+    </script>
+  </body>
+</html>
