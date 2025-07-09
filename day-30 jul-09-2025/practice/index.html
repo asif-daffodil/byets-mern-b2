@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+    <div class="w-screen h-screen flex">
+        <div class="w-96 p-4 border rounded shadow m-auto">
+            <img src="./images/hero.jpg" alt="" class="w-full h-64 object-cover rounded mb-4" id="pic" />
+            <div class="text-center">
+                <button class="bg-blue-500 text-white py-2 px-4 rounded cursor-pointer hover:bg-blue-700" id="trump">Trump</button>
+                <button class="bg-blue-500 text-white py-2 px-4 rounded mt-2 cursor-pointer hover:bg-blue-700" id="putin">Putin</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const pic = document.getElementById('pic');
+        const trump = document.getElementById('trump');
+        const putin = document.getElementById('putin');
+
+        trump.addEventListener('click', () => {
+            pic.src = './images/trump.jpg';
+        });
+
+        putin.addEventListener('click', () => {
+            pic.src = './images/putin.png';
+        });
+
+        pic.addEventListener('mouseover', () => {
+            pic.src = './images/hero.jpg';
+        });
+    </script>
+</body>
+
+</html>
