@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+        <div class="w-screen h-96 relative overflow-hidden group">
+            <div class="w-full absolute top-0 left-0 transition-all duration-500 ease-in-out slide">
+                <img src="./images/slide1.jpg" alt="" class="w-full h-96 object-fit-cover">
+                <div class="absolute left-1/2 bottom-5 transform -translate-x-1/2 text-white text-center bg-black/50 p-4">
+                    <h2 class="text-3xl">This is slider 1</h2>
+                    <p class="my-3">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate at quod voluptatum deleniti corrupti magni eum natus suscipit sapiente laborum.
+                    </p>
+                    <button class="border rounded px-4 py-2 cursor-pointer hover:bg-white hover:text-black">Read More</button>
+                </div>
+            </div>
+            <div class="w-full absolute top-0 left-0 transition-all duration-500 ease-in-out opacity-0 invisible slide">
+                <img src="./images/slide2.jpg" alt="" class="w-full h-96 object-fit-cover">
+                <div class="absolute left-1/2 bottom-5 transform -translate-x-1/2 text-white text-center bg-black/50 p-4">
+                    <h2 class="text-3xl">This is slider 2</h2>
+                    <p class="my-3">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate at quod voluptatum deleniti corrupti magni eum natus suscipit sapiente laborum.
+                    </p>
+                    <button class="border rounded px-4 py-2 cursor-pointer hover:bg-white hover:text-black">Read More</button>
+                </div>
+            </div>
+            <div class="w-full absolute top-0 left-0 transition-all duration-500 ease-in-out opacity-0 invisible slide">
+                <img src="./images/slide3.jpg" alt="" class="w-full h-96 object-fit-cover">
+                <div class="absolute left-1/2 bottom-5 transform -translate-x-1/2 text-white text-center bg-black/50 p-4">
+                    <h2 class="text-3xl">This is slider 3</h2>
+                    <p class="my-3">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate at quod voluptatum deleniti corrupti magni eum natus suscipit sapiente laborum.
+                    </p>
+                    <button class="border rounded px-4 py-2 cursor-pointer hover:bg-white hover:text-black">Read More</button>
+                </div>
+            </div>
+            <div class="absolute top-0 left-0 bottom-0 w-32 bg-black/60 text-4xl place-content-center text-center text-white transition-all duration-500 ease-in-out cursor-pointer transform -translate-x-full group-hover:translate-x-0" onclick="prevSlide()">
+                <i class="fa-regular fa-circle-left"></i>
+            </div>
+            <div class="absolute top-0 right-0 bottom-0 w-32 bg-black/60 text-4xl place-content-center text-center text-white transition-all duration-500 ease-in-out cursor-pointer transform translate-x-full group-hover:-translate-x-0" onclick="nextSlide()">
+                <i class="fa-regular fa-circle-right"></i>
+            </div>
+        </div>
+
+        <script>
+            const main = document.querySelector('.w-screen');
+            const slides = document.querySelectorAll('.slide');
+            let currentSlide = 0;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    if (i === index) {
+                        slide.classList.remove('opacity-0', 'invisible');
+                        slide.classList.add('opacity-100', 'visible');
+                    } else {
+                        slide.classList.remove('opacity-100', 'visible');
+                        slide.classList.add('opacity-0', 'invisible');
+                    }
+                });
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            let slideInterval = setInterval(nextSlide, 3000);
+
+            main.addEventListener('mouseover', () => {
+                clearInterval(slideInterval); 
+            });
+
+            main.addEventListener('mouseout', () => {
+                slideInterval = setInterval(nextSlide, 3000);
+            });
+        </script>
+  </body>
+</html>
