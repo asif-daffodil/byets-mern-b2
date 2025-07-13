@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+  <div class="w-screen h-screen bg-gradient-to-tr from-stone-700 via-purple-300 to-amber-700 flex">
+    <div class="w-[400px] p-4 bg-white m-auto">
+      <h2 class="text-2xl text-cyan-600 mb-5">To-do List</h2>
+      <form action="" class="flex" id="todoForm">
+        <input type="text" placeholder="Add Task"
+          class="w-full border border-blue-600 rounded-l rounded-2 p-2 border-r-0 outline-none" name="task">
+        <button
+          class="border border-blue-600 rounded-r rounded-2 min-w-max px-4 py-2 cursor-pointer hover:bg-blue-600 hover:text-white">+
+          Add</button>
+      </form>
+      <div id="errMsg" class="text-red-600 text-xs"></div>
+      <div id="tasks"></div>
+    </div>
+  </div>
+
+  <script>
+    const todoForm = document.getElementById("todoForm");
+    const tasks = document.getElementById("tasks");
+    const errMsg = document.getElementById("errMsg");
+    let AllTaskArr = [];
+
+    todoForm.addEventListener("submit", e => {
+      e.preventDefault();
+      const formData = new FormData(todoForm);
+      const task = formData.get("task")
+      if (!task) {
+        errMsg.textContent = "Please provide a task."
+      } else {
+        errMsg.textContent = "";
+        memoryFunc(task);
+        todoForm.reset();
+      }
+    });
+
+
+    const memoryFunc = task => {
+      const checkLocal = localStorage.getItem("tasks");
+      if (!checkLocal) {
+        AllTaskArr.push(task);
+        const AllTask = JSON.stringify(AllTaskArr);
+        localStorage.setItem("tasks", AllTask);
+      } else {
+        AllTaskArr = [...JSON.parse(checkLocal)];
+        AllTaskArr.push(task);
+        const AllTask = JSON.stringify(AllTaskArr);
+        localStorage.setItem("tasks", AllTask);
+      }
+    }
+
+    const showDiv = task => {
+      const div = document.createElement("div");
+      div.className = "text-sm p-2 border-b flex";
+      div.innerHTML = `<p class="mr-auto">${task}</p> <button class="mr-2 text-green-600 cursor-pointer"><i class="fa-solid fa-eye"></i></button> <button class="mr-2 text-orange-600 cursor-pointer"><i class="fa-solid fa-pen-to-square"></i></button> <button class="text-red-600 cursor-pointer"><i class="fa-solid fa-trash"></i></button>`;
+      tasks.appendChild(div);
+    }
+
+    AllTaskArr.forEach(arr => {
+      showDiv(arr);
+    });
+
+
+
+  </script>
+</body>
+
+</html>
