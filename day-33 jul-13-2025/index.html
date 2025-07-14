@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+  <div class="w-screen h-screen bg-gradient-to-tr from-stone-700 via-purple-300 to-amber-700 flex">
+    <div class="w-[400px] p-4 bg-white m-auto">
+      <h2 class="text-2xl text-cyan-600 mb-5">To-do List</h2>
+      <form action="" class="flex" id="todoForm">
+        <input type="text" placeholder="Add Task"
+          class="w-full border border-blue-600 rounded-l rounded-2 p-2 border-r-0 outline-none" name="task">
+        <button
+          class="border border-blue-600 rounded-r rounded-2 min-w-max px-4 py-2 cursor-pointer hover:bg-blue-600 hover:text-white">+
+          Add</button>
+      </form>
+      <div id="errMsg" class="text-red-600 text-xs"></div>
+      <div id="tasks"></div>
+    </div>
+  </div>
+
+  <!-- showFullTask Modal -->
+  <div class="w-screen h-screen fixed top-0 left-0 flex bg-black/60 opacity-0 invisible transition-all duration-500 ease-in-out" id="fullTaskModal">
+    <div class="m-auto p-4 rounded bg-white shadow w-96">
+      <h1 class="text-3xl border-b mb-3 py-3 flex justify-between align-middle">
+        Task
+        <button class="text-red-600 cursor-pointer border w-10 h-10 rounded text-xl hover:bg-red-600 hover:text-white" onclick="this.parentElement.parentElement.parentElement.classList.add('opacity-0', 'invisible')"><i class="fa-solid fa-xmark"></i></button>
+      </h1>
+      <p id="fullTaskPara">
+        
+      </p>
+    </div>
+  </div>  
+
+  <!-- editModal -->
+  <div class="w-screen h-screen fixed top-0 left-0 flex bg-black/60 opacity-0 invisible transition-all duration-500 ease-in-out" id="editModal">
+    <div class="m-auto p-4 rounded bg-white shadow w-96">
+      <h1 class="text-3xl border-b mb-3 py-3 flex justify-between align-middle">
+        Edit Task
+        <button class="text-red-600 cursor-pointer border w-10 h-10 rounded text-xl hover:bg-red-600 hover:text-white" onclick="this.parentElement.parentElement.parentElement.classList.add('opacity-0', 'invisible')"><i class="fa-solid fa-xmark"></i></button>
+      </h1>
+      <form id="editForm">
+        <input type="text" id="editInput" class="border border-blue-600 rounded p-2 w-full" />
+        <div id="errEditMsg" class="text-red-600 text-xs"></div>
+        <button class="border border-blue-600 rounded px-4 py-2 cursor-pointer hover:bg-blue-600 hover:text-white">Save</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- delete modal -->
+  <div class="w-screen h-screen fixed top-0 left-0 flex bg-black/60 opacity-0 invisible transition-all duration-500 ease-in-out" id="deleteModal">
+    <div class="m-auto p-4 rounded bg-white shadow w-96">
+      <h1 class="text-3xl border-b mb-3 py-3 flex justify-between align-middle">
+        Delete Task
+        <button class="text-red-600 cursor-pointer border w-10 h-10 rounded text-xl hover:bg-red-600 hover:text-white" onclick="this.parentElement.parentElement.parentElement.classList.add('opacity-0', 'invisible')"><i class="fa-solid fa-xmark"></i></button>
+      </h1>
+      <p>Are you sure you want to delete this task?</p>
+      <button class="border border-red-600 rounded px-4 py-2 cursor-pointer hover:bg-red-600 hover:text-white mt-4" onclick="confirmDelete()">Delete</button>
+    </div>
+  </div>
+
+  <script>
+    const todoForm = document.getElementById("todoForm");
+    const tasks = document.getElementById("tasks");
+    const errMsg = document.getElementById("errMsg");
+    let AllTaskArr = [];
+
+    todoForm.addEventListener("submit", e => {
+      e.preventDefault();
+      const formData = new FormData(todoForm);
+      const task = formData.get("task")
+      if (!task) {
+        errMsg.textContent = "Please provide a task."
+      } else {
+        errMsg.textContent = "";
+        memoryFunc(task);
+        showDiv(task);
+        todoForm.reset();
+      }
+    });
+
+
+    const memoryFunc = task => {
+      const checkLocal = localStorage.getItem("tasks");
+      if (!checkLocal) {
+        AllTaskArr.push(task);
+        const AllTask = JSON.stringify(AllTaskArr);
+        localStorage.setItem("tasks", AllTask);
+      } else {
+        AllTaskArr = [...JSON.parse(checkLocal)];
+        AllTaskArr.push(task);
+        const AllTask = JSON.stringify(AllTaskArr);
+        localStorage.setItem("tasks", AllTask);
+      }
+    }
+
+    const showDiv = task => {
+      const div = document.createElement("div");
+      div.className = "text-sm p-2 border-b flex";
+      div.innerHTML = `<p class="mr-auto truncate pr-2">${task}</p> <button class="mr-2 text-green-600 cursor-pointer" onclick="showFullTask('${task}')" ><i class="fa-solid fa-eye"></i></button> <button class="mr-2 text-orange-600 cursor-pointer" onclick="editTask('${task}')"><i class="fa-solid fa-pen-to-square"></i></button> <button class="text-red-600 cursor-pointer" onclick="deleteTask('${task}')"><i class="fa-solid fa-trash"></i></button>`;
+      tasks.appendChild(div);
+    }
+
+    const showTasks = () => {
+      const checkLocal = localStorage.getItem("tasks");
+      if (checkLocal) {
+        AllTaskArr = [...JSON.parse(checkLocal)];
+        AllTaskArr.forEach(task => {
+          showDiv(task);
+        });
+      }
+    }
+
+    showTasks();
+
+
+    const fullTaskModal = document.getElementById("fullTaskModal");
+    const fullTaskPara = document.getElementById("fullTaskPara");
+    function showFullTask(task) {
+      fullTaskModal.classList.remove("opacity-0", "invisible");
+      fullTaskPara.textContent = task;
+    }
+
+    // Edit Task
+    const editModal = document.getElementById("editModal");
+    const editForm = document.getElementById("editForm");
+    const editInput = document.getElementById("editInput");
+    const errEditMsg = document.getElementById("errEditMsg");
+    let currentTask = "";
+    function editTask(task) {
+      currentTask = task;
+      editInput.value = task;
+      editModal.classList.remove("opacity-0", "invisible");
+    }
+
+    editForm.addEventListener("submit", e => {
+      e.preventDefault();
+      const updatedTask = editInput.value.trim();
+      if (!updatedTask) {
+        errEditMsg.textContent = "Please provide a task.";
+      } else {
+        errEditMsg.textContent = "";
+        const index = AllTaskArr.indexOf(currentTask);
+        if (index > -1) {
+          AllTaskArr[index] = updatedTask;
+          localStorage.setItem("tasks", JSON.stringify(AllTaskArr));
+          tasks.innerHTML = ""; // Clear the tasks display
+          showTasks(); // Re-display all tasks
+          editModal.classList.add("opacity-0", "invisible");
+        }
+      }
+    });
+
+    // Delete Task
+    const deleteModal = document.getElementById("deleteModal");
+    let taskToDelete = "";
+    function deleteTask(task) {
+      if (task) {
+        taskToDelete = task;
+      }
+      deleteModal.classList.remove("opacity-0", "invisible");
+    }
+
+    function confirmDelete() {
+      const index = AllTaskArr.indexOf(taskToDelete);
+      if (index > -1) {
+        AllTaskArr.splice(index, 1);
+        localStorage.setItem("tasks", JSON.stringify(AllTaskArr));
+        tasks.innerHTML = ""; // Clear the tasks display
+        showTasks(); // Re-display all tasks
+        deleteModal.classList.add("opacity-0", "invisible");
+      }
+    }
+
+
+  </script>
+</body>
+
+</html>
