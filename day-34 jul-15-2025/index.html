@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <div class="w-screen h-screen flex">
+        <div class="m-auto border rounded shadow w-[600px]">
+            <div id="headings" class="flex justify-between align-center">
+                <div class="w-full text-center border-r py-2 cursor-pointer">Dhaka</div>
+                <div class="w-full text-center border-r py-2 cursor-pointer border-b bg-gray-200 hover:bg-gray-300">Chattagram</div>
+                <div class="w-full text-center border-r py-2 cursor-pointer bg-gray-200 border-b hover:bg-gray-300" cursor-pointer>Cumilla</div>
+                <div class="w-full text-center py-2 cursor-pointer border-b bg-gray-200 hover:bg-gray-300">Bogura</div>
+            </div>
+            <div id="details" class="relative h-40">
+                <div class="absolute top-0 left-0 w-full h-full p-4 transition-all duration-300 ease-in-out">Dhaka Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, similique. Laudantium ipsum enim voluptas, officia nemo rem at blanditiis dolore perferendis voluptates nesciunt impedit molestiae maxime magnam! Reiciendis, cum non.</div>
+                <div class="absolute top-0 left-0 w-full h-full p-4 opacity-0 visually-hidden transition-all duration-300 ease-in-out">Chattagram Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem recusandae quas itaque eveniet cum delectus consequatur! Neque numquam sequi blanditiis consectetur repellendus! Placeat repellendus porro id omnis maiores, itaque atque!</div>
+                <div class="absolute top-0 left-0 w-full h-full p-4 opacity-0 visually-hidden transition-all duration-300 ease-in-out">Cumilla Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, ut ab incidunt dolorum sint culpa porro alias ratione omnis quisquam aut aspernatur id quasi repellendus temporibus placeat. Beatae, nulla maiores?</div>
+                <div class="absolute top-0 left-0 w-full h-full p-4 opacity-0 visually-hidden transition-all duration-300 ease-in-out">Bogura Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae natus accusantium dolorum fugiat inventore libero numquam obcaecati voluptas alias sapiente. Error repellendus sint a vero nisi dolorem excepturi temporibus expedita?</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const headings = document.getElementById("headings").children;
+        const details = document.getElementById("details").children;
+
+        headings[0].addEventListener("click", () => {
+            headings[0].classList.remove("border-b","bg-gray-200", "hover:bg-gray-300");
+            headings[1].classList.add("border-b","bg-gray-200", "hover:bg-gray-300");
+            headings[2].classList.add("border-b","bg-gray-200", "hover:bg-gray-300");
+            headings[3].classList.add("border-b","bg-gray-200", "hover:bg-gray-300");
+            details[0].classList.remove("opacity-0", "visually-hidden");
+            details[1].classList.add("opacity-0", "visually-hidden");
+            details[2].classList.add("opacity-0", "visually-hidden");
+            details[3].classList.add("opacity-0", "visually-hidden");
+        });
+
+        headings[1].addEventListener("click", () => {
+            headings[0].classList.add("border-b","bg-gray-200", "hover:bg-gray-300");
+            headings[1].classList.remove("border-b","bg-gray-200", "hover:bg-gray-300");
+            headings[2].classList.add("border-b","bg-gray-200", "hover:bg-gray-300");
+            headings[3].classList.add("border-b","bg-gray-200", "hover:bg-gray-300");
+            details[0].classList.add("opacity-0", "visually-hidden");
+            details[1].classList.remove("opacity-0", "visually-hidden");
+            details[2].classList.add("opacity-0", "visually-hidden");
+            details[3].classList.add("opacity-0", "visually-hidden");
+        });
+
+        headings[2].addEventListener("click", () => {
+            headings[0].classList.add("border-b","bg-gray-200", "hover:bg-gray-300");
+            headings[1].classList.add("border-b","bg-gray-200", "hover:bg-gray-300");
+            headings[2].classList.remove("border-b","bg-gray-200", "hover:bg-gray-300");
+            headings[3].classList.add("border-b","bg-gray-200", "hover:bg-gray-300");
+            details[0].classList.add("opacity-0", "visually-hidden");
+            details[1].classList.add("opacity-0", "visually-hidden");
+            details[2].classList.remove("opacity-0", "visually-hidden");
+            details[3].classList.add("opacity-0", "visually-hidden");
+        });
+
+        headings[3].addEventListener("click", () => {
+            headings[0].classList.add("border-b","bg-gray-200", "hover:bg-gray-300");
+            headings[1].classList.add("border-b","bg-gray-200", "hover:bg-gray-300");
+            headings[2].classList.add("border-b","bg-gray-200", "hover:bg-gray-300");
+            headings[3].classList.remove("border-b","bg-gray-200", "hover:bg-gray-300");
+            details[0].classList.add("opacity-0", "visually-hidden");
+            details[1].classList.add("opacity-0", "visually-hidden");
+            details[2].classList.add("opacity-0", "visually-hidden");
+            details[3].classList.remove("opacity-0", "visually-hidden");
+        });
+        
+
+        /*
+        Array.from(headings).forEach((head, ind) => {
+            head.addEventListener("click", () => {
+                Array.from(headings).forEach((h, i) => {
+                    if(ind == i) {
+                        h.classList.remove("border-b","bg-gray-200", "hover:bg-gray-300");
+                        details[i].classList.remove("opacity-0", "visually-hidden");
+                    }else{
+                        h.classList.add("border-b","bg-gray-200", "hover:bg-gray-300")
+                        details[i].classList.add("opacity-0", "visually-hidden");
+                    }
+                });
+            })
+        })
+        */
+    </script>
+  </body>
+</html>
