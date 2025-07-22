@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 
 const Footer = () => {
     return (
@@ -17,16 +18,16 @@ const Footer = () => {
                         <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
                         <nav className="list-none mb-10">
                             <li>
-                                <a className="text-gray-600 hover:text-gray-800">First Link</a>
+                                <Link to="/about" className="text-gray-600 hover:text-gray-800">First Link</Link>
                             </li>
                             <li>
-                                <a className="text-gray-600 hover:text-gray-800">Second Link</a>
+                                <Link to="/about" className="text-gray-600 hover:text-gray-800">Second Link</Link>
                             </li>
                             <li>
-                                <a className="text-gray-600 hover:text-gray-800">Third Link</a>
+                                <Link to="/about" className="text-gray-600 hover:text-gray-800">Third Link</Link>
                             </li>
                             <li>
-                                <a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
+                                <Link to="/about" className="text-gray-600 hover:text-gray-800">Fourth Link</Link>
                             </li>
                         </nav>
                     </div>
