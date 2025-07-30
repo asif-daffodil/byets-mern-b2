@@ -1,0 +1,84 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "age": 24,
+      "name": "Beverly Suarez",
+      "gender": "female"
+    },
+    {
+      "id": "2",
+      "age": 26,
+      "name": "Trujillo Best",
+      "gender": "male"
+    },
+    {
+      "id": "3",
+      "age": 38,
+      "name": "Stafford Robbins",
+      "gender": "male"
+    },
+    {
+      "id": "4",
+      "age": 34,
+      "name": "Macias Alston",
+      "gender": "male"
+    },
+    {
+      "id": "5",
+      "age": 25,
+      "name": "Bridges Clayton",
+      "gender": "male"
+    },
+    {
+      "id": "6",
+      "age": 21,
+      "name": "Cleveland Schneider",
+      "gender": "male"
+    },
+    {
+      "id": "7",
+      "age": 21,
+      "name": "Sweet Pena",
+      "gender": "male"
+    },
+    {
+      "id": "8",
+      "age": 23,
+      "name": "Concetta Rodriquez",
+      "gender": "female"
+    },
+    {
+      "id": "9",
+      "age": 39,
+      "name": "Stacey York",
+      "gender": "female"
+    },
+    {
+      "id": "10",
+      "age": 38,
+      "name": "Esmeralda Graves",
+      "gender": "female"
+    }
+  ],
+  "students": [
+    {
+      "id": "1",
+      "age": 20,
+      "name": "Mckenzie Mccall",
+      "gender": "female"
+    },
+    {
+      "id": "2",
+      "age": 22,
+      "name": "Mckayla Mccullough",
+      "gender": "female"
+    },
+    {
+      "id": "3",
+      "age": 20,
+      "name": "Mckayla Mccullough",
+      "gender": "female"
+    }
+  ]
+}

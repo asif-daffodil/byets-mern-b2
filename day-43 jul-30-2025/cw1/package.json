@@ -1,0 +1,28 @@
+{
+  "name": "apurba-project",
+  "version": "1.0.0",
+  "description": "it's a impossible  project to collect taka from apurba takawala!",
+  "keywords": [
+    "takawala",
+    "kipta",
+    "regular",
+    "student",
+    "late",
+    "student"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apurba-takawala"
+  },
+  "license": "ISC",
+  "author": "apurba",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js",
+    "dev": "node index.js"
+  },
+  "dependencies": {
+    "chalk": "^5.4.1"
+  }
+}
